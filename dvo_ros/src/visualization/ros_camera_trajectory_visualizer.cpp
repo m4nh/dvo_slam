@@ -412,7 +412,7 @@ struct RosCameraTrajectoryVisualizerImpl
   {
     image_topic_ = it_.advertise("image", 1, true);
     point_cloud_topic_ = nh_.advertise<AsyncPointCloudBuilder::PointCloud>("cloud", 1, true);
-    update_timer_ = nh_.createTimer(ros::Duration(1.0), &RosCameraTrajectoryVisualizerImpl::update, this, false, true);
+    update_timer_ = nh_.createTimer(ros::Duration(0.1), &RosCameraTrajectoryVisualizerImpl::update, this, false, true);
   }
 
   ~RosCameraTrajectoryVisualizerImpl()

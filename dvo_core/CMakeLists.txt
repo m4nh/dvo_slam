@@ -4,7 +4,7 @@ project(dvo_core)
 
 find_package(catkin REQUIRED)
 find_package(cmake_modules REQUIRED)
-find_package(PCL REQUIRED COMPONENTS common)
+find_package(PCL REQUIRED COMPONENTS common filters)
 find_package(Eigen3 REQUIRED)
 find_package(sophus REQUIRED)
 find_package(Boost REQUIRED COMPONENTS thread)
@@ -28,7 +28,7 @@ include_directories(
   ${PCL_INCLUDE_DIRS}
 )
 
-add_library(dvo_core 
+add_library(dvo_core
     src/core/interpolation.cpp
     src/core/intrinsic_matrix.cpp
     src/core/least_squares.cpp
@@ -38,19 +38,19 @@ add_library(dvo_core
     src/core/point_selection.cpp
     src/core/surface_pyramid.cpp
     src/core/weight_calculation.cpp
-    
+
     src/util/histogram.cpp
-    
+
     src/visualization/camera_trajectory_visualizer.cpp
-    
+
     src/dense_tracking.cpp
     src/dense_tracking_impl.cpp
     src/dense_tracking_config.cpp
 )
 
-target_link_libraries(dvo_core 
+target_link_libraries(dvo_core
     tbb
-    boost_thread 
+    boost_thread
     ${PCL_LIBRARIES}
 )
 
